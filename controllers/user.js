@@ -108,7 +108,10 @@ async function handleOTPVerification(req, res) {
     try {
         const otpRecord = await OTP.findOne({ email, otp }).exec();
 
-        if (!otpRecord) {
+        if (otpRecord) {
+            res.status(200).render('otp-success', { message: 'OTP verified successfully. Redirecting to login page...' });
+
+        } else {
             res.status(400).send("Invalid OTP. Please try again.");
         }
 
@@ -119,8 +122,6 @@ async function handleOTPVerification(req, res) {
         });
 
         req.session.token = null;
-
-        return res.redirect("/user/login");
 
     } catch (error) {
         console.error(error);
