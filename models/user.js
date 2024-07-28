@@ -16,6 +16,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    hasAccess:{
+        type: Boolean,
+        default: false
+    },
     salt: {
         type: String
     }

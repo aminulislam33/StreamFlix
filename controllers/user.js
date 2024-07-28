@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const otpGenerator = require('otp-generator');
-const handleSendEmail = require('../utils/sendMail');
+const handleSendEmail = require('../utils/sendmail');
 const jwt = require('jsonwebtoken');
 const OTP = require('../models/otp');
 

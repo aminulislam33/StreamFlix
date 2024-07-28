@@ -1,6 +1,7 @@
 const express = require('express');
 const {handleUserSignupAndOTP, handleUserLogin, handleOTPVerification, handlerUserProfile} = require('../controllers/user');
 const { restrictToLoggedInUserOnly } = require('../middleware/auth');
+const { handleTransaction } = require('../controllers/payment');
 const router = express.Router();
 
 router.post("/signup", handleUserSignupAndOTP);
@@ -18,6 +19,8 @@ router.get("/profile", restrictToLoggedInUserOnly, (req,res)=>{
         email: req.user.email
     })
 });
-router.post("/profile", restrictToLoggedInUserOnly, handlerUserProfile)
+router.post("/profile", restrictToLoggedInUserOnly, handlerUserProfile);
+router.get('/create-order', (req,res)=>{return res.render('payment')});
+router.post('/create-order', handleTransaction);
 
 module.exports = router;

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Premium</title>
+</head>
+
+<body>
+    <form id="paymentForm">
+        <p>Rs - 500/-</p>
+        <input type="text" name="amount" value="500" disabled>
+        <button type="submit">Pay</button>
+    </form>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('paymentForm');
+
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                try {
+                    const response = await fetch('/user/create-order', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ amount: 500 })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const order = await response.json();
+                    console.log(order);
+
+                    const options = {
+                        key: "rzp_test_sdaGudTbINbSo4",
+                        amount: order.amount,
+                        currency: "INR",
+                        name: "Your Company Name",
+                        description: "Test Transaction",
+                        order_id: order.id,
+                        handler: function (response) {
+                            alert(`
+                            Payment ID: ${response.razorpay_payment_id}, Order ID: ${response.razorpay_order_id}, Signature: ${response.razorpay_signature}
+                            `);
+
+                            window.location.href = '/';
+                        },
+                        prefill: {
+                            name: "Your Name",
+                            email: "email@example.com",
+                            contact: "9999999999"
+                        },
+                        notes: {
+                            address: "Razorpay Corporate Office"
+                        },
+                        theme: {
+                            color: "#F37254"
+                        }
+                    };
+
+                    const rzp1 = new Razorpay(options);
+                    rzp1.open();
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
