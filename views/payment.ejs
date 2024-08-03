@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Premium</title>
 </head>
-
 <body>
     <form id="paymentForm">
         <p>Rs - 500/-</p>
@@ -42,18 +40,31 @@
                         key: "rzp_test_sdaGudTbINbSo4",
                         amount: order.amount,
                         currency: "INR",
-                        name: "Your Company Name",
+                        name: "Company India Pvt Ltd",
                         description: "Test Transaction",
                         order_id: order.id,
-                        handler: function (response) {
+                        handler: async function (response) {
                             alert(`
                             Payment ID: ${response.razorpay_payment_id}, Order ID: ${response.razorpay_order_id}, Signature: ${response.razorpay_signature}
                             `);
 
-                            window.location.href = '/';
+                            // Update user access
+                            try {
+                                const accessResponse = await fetch('/user/update-user-access', {
+                                    method: 'POST'
+                                });
+
+                                if (!accessResponse.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+
+                                window.location.href = '/';
+                            } catch (error) {
+                                console.error('Error updating user access:', error);
+                            }
                         },
                         prefill: {
-                            name: "Your Name",
+                            name: "testName",
                             email: "email@example.com",
                             contact: "9999999999"
                         },
@@ -74,5 +85,4 @@
         });
     </script>
 </body>
-
 </html>

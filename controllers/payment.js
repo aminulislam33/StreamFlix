@@ -16,14 +16,24 @@ async function handleTransaction(req, res) {
 
     try {
         const order = await razorpay.orders.create(options);
-        await User.findOneAndUpdate({ hasAccess: true }, { new: true });
         res.json(order);
     } catch (error) {
         console.error('Error creating order or updating user:', error);
         res.status(500).send('Internal Server Error');
     }
-}
+};
+
+async function updateUserAccess(req, res) {
+    try {
+        await User.findOneAndUpdate({ hasAccess: true }, { new: true });
+        res.status(200).send('User access updated successfully');
+    } catch (error) {
+        console.error('Error updating user access:', error);
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 module.exports = {
-    handleTransaction
+    handleTransaction,
+    updateUserAccess
 };
