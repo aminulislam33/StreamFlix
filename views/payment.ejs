@@ -4,13 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Premium</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .payment-container {
+            background-color: #1c1c1c;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .payment-container p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .payment-container input {
+            display: none; /* Hide the input field */
+        }
+
+        .btn-pay {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-pay:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <form id="paymentForm">
-        <p>Rs - 500/-</p>
-        <input type="text" name="amount" value="500" disabled>
-        <button type="submit">Pay</button>
-    </form>
+    <div class="payment-container">
+        <form id="paymentForm">
+            <p>Rs - 129/-</p>
+            <input type="text" name="amount" value="129" disabled>
+            <button type="submit" class="btn btn-pay">Pay</button>
+        </form>
+    </div>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
@@ -26,7 +74,7 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ amount: 500 })
+                        body: JSON.stringify({ amount: 12900 }) // Amount in paise
                     });
 
                     if (!response.ok) {
@@ -41,7 +89,7 @@
                         amount: order.amount,
                         currency: "INR",
                         name: "Company India Pvt Ltd",
-                        description: "Test Transaction",
+                        description: "Premium Subscription",
                         order_id: order.id,
                         handler: async function (response) {
                             alert(`

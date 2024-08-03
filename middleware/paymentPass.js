@@ -17,7 +17,7 @@ async function Paymentpass(req, res, next) {
     if (user.hasAccess) {
         next();
     } else {
-        return res.send("You don't have premium to watch movies");
+        return res.render("buyPremium");
     }
 };
 

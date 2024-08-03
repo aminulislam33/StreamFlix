@@ -28,7 +28,7 @@ async function handleUserSignupAndOTP(req, res) {
             const text = `
     Dear ${name},
 
-Thank you for using URL Shortener. Here is your OTP for verification: ${otp}
+Thank you for using StreamFlix. Here is your OTP for verification: ${otp}
 
 Please enter this OTP within 5 minutes to complete your verification process.
 
