@@ -48,7 +48,6 @@
                             Payment ID: ${response.razorpay_payment_id}, Order ID: ${response.razorpay_order_id}, Signature: ${response.razorpay_signature}
                             `);
 
-                            // Update user access
                             try {
                                 const accessResponse = await fetch('/user/update-user-access', {
                                     method: 'POST'

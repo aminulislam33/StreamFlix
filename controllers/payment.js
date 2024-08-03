@@ -1,4 +1,4 @@
-const razorpay = require('razorpay');
+const razorpay = require('../service/razorpay');
 const User = require('../models/user');
 
 async function handleTransaction(req, res) {
@@ -25,7 +25,7 @@ async function handleTransaction(req, res) {
 
 async function updateUserAccess(req, res) {
     try {
-        await User.findOneAndUpdate({ hasAccess: true }, { new: true });
+        await User.findOneAndUpdate({ hasAccess: false }, { hasAccess: true }, { new: true });
         res.status(200).send('User access updated successfully');
     } catch (error) {
         console.error('Error updating user access:', error);
