@@ -14,10 +14,29 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
             text-align: center;
+            flex: 1;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: #f8f9fa;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -30,6 +49,22 @@
         <h1>Welcome to StreamFlix</h1>
         <p>Your ultimate destination for streaming movies and TV shows.</p>
     </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 StreamFlix. All rights reserved.</p>
+            <p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a>
+            </p>
+            <p>
+                Contact Us: <br>
+                Email: <a href="mailto:contact@aminuldev.me">contact@aminuldev.me</a> <br>
+                Mob: <a href="tel:+919064767147">9064767147</a>
+            </p>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

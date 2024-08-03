@@ -10,6 +10,7 @@
             background-color: #121212;
             color: #ffffff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -25,15 +26,16 @@
             max-width: 400px;
             width: 100%;
             text-align: center;
+            margin: auto;
+        }
+
+        .payment-container input {
+            display: none; /* Hide the input field */
         }
 
         .payment-container p {
             font-size: 20px;
             margin-bottom: 20px;
-        }
-
-        .payment-container input {
-            display: none; /* Hide the input field */
         }
 
         .btn-pay {
@@ -52,6 +54,8 @@
     </style>
 </head>
 <body>
+
+    <!-- Main Content -->
     <div class="payment-container">
         <form id="paymentForm">
             <p>Rs - 129/-</p>
@@ -60,6 +64,10 @@
         </form>
     </div>
 
+    <!-- Footer -->
+    <%- include("./partials/footer.ejs") %>
+
+    <!-- Scripts -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -74,7 +82,7 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ amount: 12900 }) // Amount in paise
+                        body: JSON.stringify({ amount: 129 }) 
                     });
 
                     if (!response.ok) {
@@ -131,5 +139,8 @@
             });
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
