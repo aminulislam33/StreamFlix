@@ -12,8 +12,6 @@ async function Paymentpass(req, res, next) {
 
     const user = await User.findOne({ email: TokenUser.email });
 
-    console.log(user);
-
     if (user.hasAccess) {
         next();
     } else {
