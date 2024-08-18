@@ -12,7 +12,7 @@ const moviesRouter = require('./routes/moviesRouter');
 
 const app = express();
 
-const port =  3000;
+const port =  3001;
 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
