@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGO_URL)
     });
 
 app.set("view engine", "ejs");
-app.set("views", path.resolve("./views"));
+app.set("views", path.resolve(__dirname, 'views'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
