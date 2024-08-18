@@ -2,17 +2,17 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const userRouter = require('../routes/user');
+const userRouter = require('./src/routes/user');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const session = require('express-session');
-const staticRouter = require('../routes/staticRouter');
+const staticRouter = require('./src/routes/staticRouter');
 const cloudinary = require('cloudinary');
-const moviesRouter = require('../routes/moviesRouter');
+const moviesRouter = require('./src/routes/moviesRouter');
 
 const app = express();
 
-const port =  3001;
+const port =  8000;
 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGO_URL)
     });
 
 app.set("view engine", "ejs");
-app.set("views", path.resolve("./views"));
+app.set("views", path.resolve("./src/views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
