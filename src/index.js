@@ -2,13 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const userRouter = require('./routes/user');
+const userRouter = require('../routes/user');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const session = require('express-session');
-const staticRouter = require('./routes/staticRouter');
+const staticRouter = require('../routes/staticRouter');
 const cloudinary = require('cloudinary');
-const moviesRouter = require('./routes/moviesRouter');
+const moviesRouter = require('../routes/moviesRouter');
 
 const app = express();
 
