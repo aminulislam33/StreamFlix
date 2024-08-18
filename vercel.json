@@ -1,9 +1,21 @@
 {
   "version": 2,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "index.js"
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": {
+        "distDir": "build"
+      }
     }
-  ]
+  ],
+  "env": {
+    "PORT": "8000",
+    "MONGO_URL": "mongodb+srv: //alfaz1873:yqQjYH3eZERAjX35@cluster0.huhfyyw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    "SECRET": "very_%#secret@15",
+    "EMAIL": "aminuldev46@gmail.com",
+    "PASSWORD": "rsaz ahiw bdqi wduh",
+    "BASE_URL": "localhost: 8000",
+    "CLOUDI_SECRET": "c3968uQj-l8n4EDCQaBjxrQC40g"
+  }
 }
