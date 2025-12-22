@@ -33,8 +33,8 @@ app.use(session({
     cookie: { secure: false }
 }));
 cloudinary.v2.config({
-  cloud_name: 'dwr8472qb',
-  api_key: '872674654568337',
+  cloud_name: 'process.env.CLOUDI_NAME',
+  api_key: 'process.env.CLOUDI_KEY',
   api_secret: process.env.CLOUDI_SECRET,
   secure: true,
 });
